@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
 gemspec
-gem 'huginn_agent', '~> 0.6.0'
+gem 'huginn_agent', :github => 'huginn_agent', :branch => 'master'
+

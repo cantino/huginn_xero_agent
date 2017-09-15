@@ -1,3 +1,7 @@
 spec/huginn
 .env
 Gemfile.lock
+coverage
+privatekey.pem
+privkey.pem
+publickey.cer

@@ -1,16 +1,10 @@
-# XeroAgent
-
-Welcome to your new agent gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/huginn_xero_agent`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+# Huginn Xero Agent
 
 ## Installation
 
 Add this string to your Huginn's .env `ADDITIONAL_GEMS` configuration:
 
 ```ruby
-huginn_xero_agent
-# when only using this agent gem it should look like hits:
 ADDITIONAL_GEMS=huginn_xero_agent
 ```
 
@@ -18,9 +12,25 @@ And then execute:
 
     $ bundle
 
-## Usage
+## Adding to your Huginn instance
 
-TODO: Write usage instructions here
+Since you'll need a personal Xero application to authorize API access, visit https://app.xero.com and register a new private application. You'll need a X509 Public Key Certificate, which you can generate like this:
+
+```shell
+openssl genrsa -out privatekey.pem 1024
+openssl req -new -x509 -key privatekey.pem -out publickey.cer -days 1825
+```
+
+Now copy publickey.cer and paste it in to the web UI.
+
+You'll be given consumer key and secret, which you should put into the .env file of your Huginn instance along with the path to your private key:
+
+```
+ADDITIONAL_GEMS=huginn_xero_agent
+XERO_CONSUMER_KEY=HCJI7Q...
+XERO_CONSUMER_SECRET=PHOD...
+XERO_PRIVATE_KEY_PATH=/path/to/your/privatekey.pem
+```
 
 ## Development
 
@@ -38,7 +48,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/huginn_xero_agent/fork )
+1. Fork it ( https://github.com/cantino/huginn_xero_agent/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

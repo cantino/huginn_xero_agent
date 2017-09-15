@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_runtime_dependency "huginn_agent"
+  spec.add_runtime_dependency "xero_gateway"
 end
