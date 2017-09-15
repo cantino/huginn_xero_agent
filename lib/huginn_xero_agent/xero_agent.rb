@@ -41,7 +41,7 @@ module Agents
     end
 
     def validate_options
-      errors.add(:base, "due_in_days must be a number") if options['due_in_days'].present? && !options['due_in_days'].to_s =~ /\A\d+\z/
+      errors.add(:base, "due_in_days must be a number") if options['due_in_days'].present? && options['due_in_days'].to_s !~ /\A\d+\z/
       errors.add(:base, "item_description and item_amount are required") unless options['item_description'].present? && options['item_amount'].present?
       errors.add(:base, "expected_receive_period_in_days is required") unless options['expected_receive_period_in_days'].present?
     end

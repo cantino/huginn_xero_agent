@@ -9,5 +9,38 @@ describe Agents::XeroAgent do
     @checker.save!
   end
 
-  pending "add specs here"
+  describe "validation" do
+    before do
+      expect(@checker).to be_valid
+    end
+
+    it "should validate integer nature of due_in_days" do
+      @checker.options[:due_in_days] = "a"
+      expect(@checker).not_to be_valid
+
+      @checker.options[:due_in_days] = "1.1"
+      expect(@checker).not_to be_valid
+
+      @checker.options[:due_in_days] = "1"
+      expect(@checker).to be_valid
+
+      @checker.options[:due_in_days] = 1
+      expect(@checker).to be_valid
+    end
+
+    it "should validate presence of expected_receive_period_in_days" do
+      @checker.options[:expected_receive_period_in_days] = nil
+      expect(@checker).not_to be_valid
+    end
+
+    it "should validate presence of item_description" do
+      @checker.options[:item_description] = nil
+      expect(@checker).not_to be_valid
+    end
+
+    it "should validate presence of item_amount" do
+      @checker.options[:item_amount] = nil
+      expect(@checker).not_to be_valid
+    end
+  end
 end
