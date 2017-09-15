@@ -1,5 +1,7 @@
 # Huginn Xero Agent
 
+<img src="https://www.xero.com/content/dam/xero/images/opengraph/opengraph-xero.png" height=150px>
+
 ## Installation
 
 Add this string to your Huginn's .env `ADDITIONAL_GEMS` configuration:
@@ -13,6 +15,8 @@ And then execute:
     $ bundle
 
 ## Adding to your Huginn instance
+
+<img src="https://raw.github.com/huginn/huginn/master/media/huginn-logo.png?s=100" height=100px>
 
 Since you'll need a personal Xero application to authorize API access, visit https://app.xero.com and register a new private application. You'll need a X509 Public Key Certificate, which you can generate like this:
 
