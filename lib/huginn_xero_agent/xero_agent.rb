@@ -73,7 +73,7 @@ module Agents
         invoice.contact.address.country = interpolated['contact_address_country'].presence
         invoice.contact.address.post_code = interpolated['contact_address_post_code'].presence
 
-        [Utils.value_at(event.payload, interpolated['item_path']) || {}].flatten.each do |item|
+        [Utils.value_at(event.payload, interpolated['item_path'].presence || '.') || {}].flatten.each do |item|
           line_item = XeroGateway::LineItem.new(
             :description => interpolated(item)['item_description'],
             :account_code => interpolated(item)['item_account_code'].presence,
